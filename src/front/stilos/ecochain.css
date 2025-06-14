@@ -1,0 +1,74 @@
+/* EcoChain - Estilos personalizados */
+body {
+    background: linear-gradient(120deg, #e0ffe0 0%, #b2f7ef 100%);
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    color: #222;
+}
+header {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+header h1 {
+    color: #219150;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+#main-content, #main-content-2 {
+    margin: 0 auto;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(33,145,80,0.08);
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+}
+.button.is-primary {
+    background-color: #219150;
+    border: none;
+}
+.button.is-primary:hover {
+    background-color: #17663a;
+}
+.button.is-link.is-light {
+    color: #219150;
+    border: 1px solid #219150;
+    background: #fff;
+}
+.notification.is-info {
+    background: #b2f7ef;
+    color: #17663a;
+    border-left: 5px solid #219150;
+}
+#reciclable-items {
+    background: #f6fff6;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(33,145,80,0.05);
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 500px;
+    text-align: center;
+}
+#reciclable-items h2 {
+    color: #219150;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+#reciclable-items ul {
+    list-style: none;
+    padding: 0;
+}
+#reciclable-items li {
+    display: inline-block;
+    margin: 0 10px;
+    font-weight: 500;
+    color: #17663a;
+}
+#reciclable-items img {
+    margin-bottom: 1rem;
+}
+.modal-content .box {
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(33,145,80,0.10);
+}

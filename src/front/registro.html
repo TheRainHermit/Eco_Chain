@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario - EcoChain</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="icon" href="img/ecochain.png" type="image/png">
+    
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Registro de Usuario</h1>
+            <form id="register-form" class="box">
+                <div class="field">
+                    <label class="label">Usuario</label>
+                    <div class="control">
+                        <input class="input" type="text" id="username" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Nombre completo</label>
+                    <div class="control">
+                        <input class="input" type="text" id="full_name" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Correo electrónico</label>
+                    <div class="control">
+                        <input class="input" type="email" id="email" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Contraseña</label>
+                    <div class="control has-icons-right">
+                        <input class="input" type="password" id="password" required>
+                        <span class="icon is-small is-right" style="cursor:pointer;" id="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="button is-success">Registrarse</button>
+            </form>
+            <div id="register-message"></div>
+        </div>
+    </section>
+    <script>
+    const API_URL = "/api";
+
+    document.getElementById('register-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const full_name = document.getElementById('full_name').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        try {
+            const response = await fetch(`${API_URL}/auth/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, full_name, email, password })
+            });
+            const msgDiv = document.getElementById('register-message');
+            if (response.ok) {
+                msgDiv.textContent = '¡Registro exitoso! Ahora puedes iniciar sesión.';
+                msgDiv.className = 'notification is-success';
+                document.getElementById('register-form').reset();
+            } else {
+                const data = await response.json();
+                msgDiv.textContent = data.detail || 'Error al registrar usuario';
+                msgDiv.className = 'notification is-danger';
+            }
+        } catch (err) {
+            const msgDiv = document.getElementById('register-message');
+            msgDiv.textContent = 'Error de conexión con el backend';
+            msgDiv.className = 'notification is-danger';
+        }
+    });
+
+    // Mostrar/ocultar contraseña
+    const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('toggle-password');
+    togglePassword.addEventListener('click', function() {
+        const type = passwordInput.type === 'password' ? 'text' : 'password';
+        passwordInput.type = type;
+        this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+    });
+    </script>
+</body>
+</html>

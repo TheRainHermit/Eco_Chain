@@ -1,0 +1,12 @@
+FastAPI
+uvicorn
+sqlalchemy
+pydantic
+passlib[bcrypt]
+python-jose
+httpx
+pytest
+pytest-asyncio
+databases
+asyncpg
+pydantic-settings

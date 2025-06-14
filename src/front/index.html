@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecochain</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-carousel/4.0.0/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-extensions/7.0.0/css/bulma-extensions.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-slider/0.1.0/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-calendar/7.0.0/css/bulma-calendar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-steps/7.0.0/css/bulma-steps.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-switch/0.1.0/css/bulma-switch.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-tooltip/0.1.0/css/bulma-tooltip.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-accordion/0.1.0/css/bulma-accordion.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-modal-fx/0.1.0/css/bulma-modal-fx.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-pageloader/0.1.0/css/bulma-pageloader.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-checkradio/0.1.0/css/bulma-checkradio.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-tagsinput/0.1.0/css/bulma-tagsinput.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-steps/0.1.0/css/bulma-steps.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-extensions/0.1.0/css/bulma-extensions.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-carousel/0.1.0/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-slider/0.1.0/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-calendar/7.0.0/css/bulma-calendar.min.css">
+    <link rel="stylesheet" href="stilos/ecochain.css">
+    <link rel="icon" href="img/ecochain.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div style="flex:1;"></div>
+            <div style="text-align: center; flex:2;">
+                <h1 style="color: #219150; font-size: 2.5rem; font-weight: bold; letter-spacing: 2px; margin-bottom: 10px;">Welcome to Ecochain</h1>
+                <img src="img/ecochain.png" width="200" height="200" alt="Ecochain Logo" style="display: block; margin: 0 auto;">
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; flex:1; justify-content: flex-end;">
+                <span class="tag is-success is-medium"><i class="fas fa-user"></i> Simulador: demo</span>
+            </div>
+        </div>
+    </header>
+    <main id="main-content">
+        <div class="box" id="puntos-box">
+            <h2 class="title is-5"><i class="fas fa-coins"></i> Puntos</h2>
+            <div id="puntos-usuario" class="notification is-info">Tienes 2500 puntos.</div>
+            <button id="convertir-btn" class="button is-warning"><i class="fas fa-exchange-alt"></i> Convertir 1000 puntos a 1 ETH</button>
+        </div>
+        <div class="box" id="blockchain-box">
+            <h2 class="title is-5"><i class="fab fa-ethereum"></i> Blockchain (ETH)</h2>
+            <div id="eth-usuario" class="notification is-info">Tienes 0 ETH.</div>
+        </div>
+        <div class="box" id="ia-recomendacion-box">
+            <h2 class="title is-5"><i class="fas fa-robot"></i> Recomendación IA</h2>
+            <div id="ia-recomendacion" class="notification is-success">Cargando recomendación...</div>
+            <button id="nueva-recomendacion" class="button is-link is-light" style="margin-top: 0.5rem;"><i class="fas fa-sync-alt"></i> Nueva recomendación</button>
+        </div>
+        <div class="box" id="ia-chatbot-box">
+            <h2 class="title is-5"><i class="fas fa-comments"></i> Chatbot EcoChain IA</h2>
+            <div id="chatbot-mensajes" style="height:120px; overflow-y:auto; background:#f6fff6; border-radius:8px; padding:0.5rem; margin-bottom:0.5rem;"></div>
+            <form id="chatbot-form" style="display:flex; gap:0.5rem;">
+                <input class="input" type="text" id="chatbot-input" placeholder="Pregunta algo sobre reciclaje..." required>
+                <button class="button is-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </main>
+    <div id="reciclable-items">
+        <h2>Reciclable Items</h2>
+        <img src="img/pote_basura.png" id="recycle-icon" width="250" height="250" alt="Recycle Icon">
+        <ul>
+            <li><a href="#">Plastics</a></li>
+            <li><a href="#">Metals</a></li>
+            <li><a href="#">Paper</a></li>
+            <li><a href="#">Glass</a></li>
+        </ul>
+        <p>Your content here...</p>
+    </div>
+    <script>
+// Simulador de puntos y ETH
+let puntos = 2500;
+let eth = 0;
+
+function actualizarSimulador() {
+    document.getElementById('puntos-usuario').textContent = `Tienes ${puntos} puntos.`;
+    document.getElementById('eth-usuario').textContent = `Tienes ${eth} ETH.`;
+}
+
+document.getElementById('convertir-btn').addEventListener('click', function() {
+    if (puntos >= 1000) {
+        puntos -= 1000;
+        eth += 1;
+        actualizarSimulador();
+        alert('¡Has convertido 1000 puntos a 1 ETH!');
+    } else {
+        alert('No tienes suficientes puntos para convertir.');
+    }
+});
+
+actualizarSimulador();
+
+// IA: Recomendaciones ecológicas
+const recomendacionesIA = [
+    "Recicla botellas de plástico y reduce el uso de desechables.",
+    "Lleva tus propias bolsas reutilizables al supermercado.",
+    "Apaga las luces cuando no las uses para ahorrar energía.",
+    "Participa en eventos de reciclaje de tu comunidad.",
+    "Separa los residuos orgánicos de los inorgánicos en casa.",
+    "Utiliza el transporte público o bicicleta para reducir tu huella de carbono.",
+    "Reutiliza envases y frascos antes de desecharlos.",
+    "Compra productos locales para reducir emisiones de transporte.",
+    "Planta un árbol y ayuda a mejorar el aire de tu ciudad.",
+    "Comparte tus hábitos ecológicos con amigos y familia."
+];
+function mostrarRecomendacionIA() {
+    const rec = recomendacionesIA[Math.floor(Math.random() * recomendacionesIA.length)];
+    document.getElementById('ia-recomendacion').textContent = rec;
+}
+document.getElementById('nueva-recomendacion').addEventListener('click', mostrarRecomendacionIA);
+mostrarRecomendacionIA();
+
+// IA: Chatbot educativo simulado
+const respuestasIA = [
+    {q: /puntos/i, a: "Ganas puntos reciclando y participando en eventos ecológicos."},
+    {q: /eth|ethereum|cripto/i, a: "Puedes convertir tus puntos en ETH simulado para aprender sobre blockchain."},
+    {q: /reciclar/i, a: "Recicla plásticos, metales, papel y vidrio para sumar puntos y ayudar al planeta."},
+    {q: /blockchain/i, a: "La blockchain permite registrar tus logros ecológicos de forma segura y transparente."},
+    {q: /hola|buenas/i, a: "¡Hola! Soy el asistente IA de EcoChain. Pregúntame sobre reciclaje o puntos."},
+    {q: /evento/i, a: "Participa en eventos de reciclaje para ganar más puntos y premios."},
+    {q: /ayuda/i, a: "¿En qué puedo ayudarte? Puedes preguntar sobre puntos, reciclaje o blockchain."}
+];
+const chatbotMensajes = document.getElementById('chatbot-mensajes');
+function agregarMensaje(autor, texto) {
+    const div = document.createElement('div');
+    div.innerHTML = `<b>${autor}:</b> ${texto}`;
+    chatbotMensajes.appendChild(div);
+    chatbotMensajes.scrollTop = chatbotMensajes.scrollHeight;
+}
+document.getElementById('chatbot-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const input = document.getElementById('chatbot-input');
+    const pregunta = input.value.trim();
+    if (!pregunta) return;
+    agregarMensaje('Tú', pregunta);
+    let respondido = false;
+    for (const r of respuestasIA) {
+        if (r.q.test(pregunta)) {
+            setTimeout(() => agregarMensaje('EcoChain IA', r.a), 500);
+            respondido = true;
+            break;
+        }
+    }
+    if (!respondido) {
+        setTimeout(() => agregarMensaje('EcoChain IA', '¡Buena pregunta! Pronto te daré una respuesta más completa.'), 500);
+    }
+    input.value = '';
+});
+</script>
+</body>
+</html>
